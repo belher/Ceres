@@ -1,0 +1,76 @@
+﻿@model PagedList.IPagedList<Ceres.Comunes.Models.Articulo>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Articulos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2 class="text-center text-success">Listado de Articulos</h2>
+
+
+@using (Html.BeginForm("Index", "Articulo", FormMethod.Get))
+{
+
+    <div class="well well-sm">
+
+
+        <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Create","Articulo")" class="btn btn-primary edit-radicado">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+
+        
+            Buscar por descripcion: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+            <input type="submit" value="Buscar" />
+        
+    </div>
+
+
+}
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr class="bg-primary">
+            <th class="d-none">   @Html.ActionLink("Codigo", "Index", new { sortOrder = ViewBag.codigo, currentFilter = ViewBag.CurrentFilter },new { @class="tableHeaderLink"})   </th>
+            <th>  @Html.ActionLink("Decripcion", "Index", new { sortOrder = ViewBag.descripcion, currentFilter = ViewBag.CurrentFilter }, new { @class = "tableHeaderLink" }) </th>
+            <th>  @Html.ActionLink("Estatus", "Index", new { sortOrder = ViewBag.estatus, currentFilter = ViewBag.CurrentFilter }, new { @class = "tableHeaderLink" }) </th>
+            <th colspan="3">Operaciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var objProducto in Model)
+        {
+            <tr>
+                <td class="d-none">@objProducto.CveArticulo</td>
+                <td>@objProducto.Nombre</td>
+                <td>@objProducto.Estatus</td>
+
+                <td>
+                    <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Modificar","Articulo",new { codigo = @objProducto.CveArticulo } )" class="btn btn-primary edit-radicado">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                    </a>
+
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
