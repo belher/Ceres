@@ -8,7 +8,7 @@ namespace Ceres.Servicios.Models
     using Dominio.Models;
     using System.Linq;
     using Ceres.Comunes.Models;
-    class SerMarca_comercial
+    public class SerMarca_comercial
     {
         private DataContext conexion = new DataContext();
 
@@ -20,8 +20,7 @@ namespace Ceres.Servicios.Models
                 {
                     return conexion.Marca_comercial.OrderBy(a => a.Descripcion).ToList();
                 }
-                return null;
-
+                return new List<Marca_comercial>();
             }
         }
 

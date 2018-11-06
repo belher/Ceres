@@ -8,7 +8,7 @@ namespace Ceres.Dominio.Models
 
     public class DataContext:DbContext
     {
-        public DataContext():base()
+        public DataContext():base("Data source=DESKTOP-9AOLF9L\\SQLNAVARRO; Initial catalog=ceres;user=SA;Password=Belher123!")
         {
 
         
