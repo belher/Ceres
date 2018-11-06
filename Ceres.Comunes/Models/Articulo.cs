@@ -9,7 +9,9 @@ namespace Ceres.Comunes.Models
         [Key]
         public String CveArticulo { get; set; }
 
+
         public String Nombre { get; set; }
+
 
         public String Estatus { get; set; }
 
