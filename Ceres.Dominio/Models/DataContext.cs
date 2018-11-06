@@ -14,7 +14,7 @@ namespace Ceres.Dominio.Models
         
         }
         public DbSet<Articulo> Articulo { get; set; }
-
+        public DbSet<Grupo_Familia> GrupoFamilia { get; set; }
         //public DbSet<Categoria> Categoria { get; set; }
     }
 }
