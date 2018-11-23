@@ -9,6 +9,7 @@ namespace Ceres.Comunes.Models
         [Key]
         public String CveArticulo { get; set; }
         public String Nombre { get; set; }
+        [UIHint("Estatus")]
         public String Estatus { get; set; }
 
     }

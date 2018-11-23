@@ -1,20 +1,25 @@
 ﻿namespace Ceres.Comunes.Models
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    [Table("Cat_Grupo_Familia")]
-   public  class Grupo_Familia
+    using Ceres.Comunes.Models;
+    [Table("Cat_Familia")]
+    public class Familia
     {
+
         [Key]
-        [Column(name:"cve_Grupo_Familia")]
         [StringLength(6)]
-        public string Codigo { get; set; }
-        [Required]
+        [Column(name:"cve_Familia")]
+        public string Codigo { get; set;}
         [StringLength(60)]
         public string Descripcion { get; set; }
-        [StringLength(1)]
+        public Grupo_Familia Grupo_Familia { get; set; }
+        //[ForeignKey("cve_Grupo_Familia")]
+        //public virtual List<Grupo_Familia>GrupoFamilia { get; set; }
         [UIHint("Estatus")]
         public string Estatus { get; set; }
+
         private string Importado { get; set; }
     }
 }

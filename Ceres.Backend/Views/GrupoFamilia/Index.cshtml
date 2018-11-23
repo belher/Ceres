@@ -1,15 +1,15 @@
-﻿@model PagedList.IPagedList<Ceres.Comunes.Models.Grupo_Familia >
+﻿@model PagedList.IPagedList<Ceres.Comunes.Models.Grupo_Familia>
 @using PagedList.Mvc;
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Grupo Familia";
+    ViewBag.Title = "Grupo familia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<h2 class="text-center text-success">Listado de grupo familia</h2>
+<h2 class="text-center text-success">Listado de grupos de familia</h2>
 
 
 @using (Html.BeginForm("Index", "GrupoFamilia", FormMethod.Get))
@@ -44,12 +44,12 @@
         @foreach (var objProducto in Model)
         {
             <tr>
-                <td class="d-none">@objProducto.cve_Grupo_Familia</td>
+                <td class="d-none">@objProducto.Codigo</td>
                 <td>@objProducto.Descripcion</td>
-                <td>@objProducto.Estatus</td>
+                <td>@Html.DisplayFor(Model => objProducto.Estatus)</td>
 
                 <td>
-                    <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Modificar","GrupoFamilia",new { codigo = @objProducto.cve_Grupo_Familia } )" class="btn btn-primary edit-radicado">
+                    <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Modificar","GrupoFamilia",new { codigo = @objProducto.Codigo } )" class="btn btn-primary edit-radicado">
                         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                     </a>
 

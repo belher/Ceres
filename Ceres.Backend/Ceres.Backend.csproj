@@ -160,6 +160,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ArticuloController.cs" />
+    <Compile Include="Controllers\FamiliaController.cs" />
     <Compile Include="Controllers\GrupoFamiliaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -209,9 +210,12 @@
     <Content Include="Views\Articulo\Index.cshtml" />
     <Content Include="Views\Articulo\Create.cshtml" />
     <Content Include="Views\Articulo\Modificar.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\Estatus.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Estatus.cshtml" />
     <Content Include="Views\GrupoFamilia\Index.cshtml" />
+    <Content Include="Views\GrupoFamilia\Create.cshtml" />
+    <Content Include="Views\GrupoFamilia\Modificar.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Estatus.cshtml" />
+    <Content Include="Views\Familia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

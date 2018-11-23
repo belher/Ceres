@@ -1,31 +1,31 @@
-﻿@model PagedList.IPagedList<Ceres.Comunes.Models.Articulo>
+﻿@model PagedList.IPagedList<Ceres.Comunes.Models.Familia>
 @using PagedList.Mvc;
 
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 <link href="~/Content/Site.css" rel="stylesheet" />
 @{
-    ViewBag.Title = "Articulos";
+    ViewBag.Title = "familia";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
-<h2 class="text-center text-success">Listado de Articulos</h2>
+<h2 class="text-center text-success">Listado de familias</h2>
 
 
-@using (Html.BeginForm("Index", "Articulo", FormMethod.Get))
+@using (Html.BeginForm("Index", "Familia", FormMethod.Get))
 {
 
     <div class="well well-sm">
 
 
-        <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Create","Articulo")" class="btn btn-primary edit-radicado">
+        <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Create","Familia")" class="btn btn-primary edit-radicado">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </a>
 
-        
-            Buscar por descripcion: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Buscar" />
-        
+
+        Buscar por descripcion: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Buscar" />
+
     </div>
 
 
@@ -34,7 +34,7 @@
 <table class="table table-hover table-striped">
     <thead>
         <tr class="bg-primary">
-            <th class="d-none">   @Html.ActionLink("Codigo", "Index", new { sortOrder = ViewBag.codigo, currentFilter = ViewBag.CurrentFilter },new { @class="tableHeaderLink"})   </th>
+            <th class="d-none">   @Html.ActionLink("Codigo", "Index", new { sortOrder = ViewBag.codigo, currentFilter = ViewBag.CurrentFilter }, new { @class = "tableHeaderLink" })   </th>
             <th>  @Html.ActionLink("Decripcion", "Index", new { sortOrder = ViewBag.descripcion, currentFilter = ViewBag.CurrentFilter }, new { @class = "tableHeaderLink" }) </th>
             <th>  @Html.ActionLink("Estatus", "Index", new { sortOrder = ViewBag.estatus, currentFilter = ViewBag.CurrentFilter }, new { @class = "tableHeaderLink" }) </th>
             <th colspan="3">Operaciones</th>
@@ -43,20 +43,21 @@
     <tbody>
         @foreach (var objProducto in Model)
         {
-            <tr>
-                <td class="d-none">@objProducto.CveArticulo</td>
-                <td>@objProducto.Nombre </td>
-                <td>@Html.DisplayFor(modelItem  => objProducto.Estatus)</td>
+        <tr>
+            <td class="d-none">@objProducto.Codigo</td>
+            <td>@objProducto.Descripcion</td>
+            <td>@Html.DisplayFor(Model => objProducto.GrupoFamilia.Descripcion)</td>
+            <td>@Html.DisplayFor(Model => objProducto.Estatus)</td>
 
-                <td>
-                    <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Modificar","Articulo",new { codigo = @objProducto.CveArticulo } )" class="btn btn-primary edit-radicado">
-                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                    </a>
+            <td>
+                <a data-toggle="modal" data-target="#exampleModal3" href="@Url.Action("Modificar","Familia",new { codigo = @objProducto.Codigo } )" class="btn btn-primary edit-radicado">
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </a>
 
-                </td>
+            </td>
 
 
-            </tr>
+        </tr>
         }
     </tbody>
 

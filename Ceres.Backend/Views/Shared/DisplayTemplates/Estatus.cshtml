@@ -1,7 +1,10 @@
-﻿@if (Model == "A")
-{
-    <div>Activo</div>
-}
-{
-    <div>Cancelado</div>
+﻿@{
+    if (Model == "A")
+    {
+        <div>Activo</div>
+    }
+    else
+    {
+        <div>Cancelado</div>
+    }
 }

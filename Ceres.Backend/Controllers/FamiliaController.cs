@@ -1,5 +1,4 @@
-﻿
-namespace Ceres.Backend.Controllers
+﻿namespace Ceres.Backend.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -9,12 +8,10 @@ namespace Ceres.Backend.Controllers
     using Ceres.Servicios.Models;
     using Ceres.Comunes.Models;
     using PagedList;
-
-    public class GrupoFamiliaController : Controller
+    public class FamiliaController : Controller
     {
-        // GET: GrupoFamilia
 
-        private serGrupoFamilia _Servicio = new serGrupoFamilia();
+        private serFamilia _Servicio = new serFamilia();
 
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -34,10 +31,10 @@ namespace Ceres.Backend.Controllers
             ViewBag.CurrentFilter = searchString;
 
 
-            var GrupoFamilia = _Servicio.Listado;
+            var Familia = _Servicio.Listado;
 
-            var gf = from s in GrupoFamilia
-                            select s;
+            var gf = from s in Familia
+                     select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 gf = gf.Where(s => s.Descripcion.Contains(searchString));
@@ -78,7 +75,7 @@ namespace Ceres.Backend.Controllers
 
 
         [HttpPost]
-        public ActionResult Create(Grupo_Familia modelo)
+        public ActionResult Create(Familia modelo)
         {
 
 
@@ -107,7 +104,7 @@ namespace Ceres.Backend.Controllers
 
 
         [HttpPost]
-        public ActionResult Modificar(Grupo_Familia modelo)
+        public ActionResult Modificar(Familia modelo)
         {
 
             _Servicio.Modificar(modelo);
@@ -116,6 +113,5 @@ namespace Ceres.Backend.Controllers
 
 
         }
-
     }
 }

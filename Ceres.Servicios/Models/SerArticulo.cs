@@ -15,12 +15,7 @@ namespace Ceres.Servicios.Models
         {
             get 
             {
-                if (conexion.Articulo.Count()>0 )
-                {
-                    return conexion.Articulo.OrderBy(a => a.Nombre).ToList();
-                }
-                return null;
-                
+                return conexion.Articulo.OrderBy(a => a.Nombre).ToList();               
             }
         }
 

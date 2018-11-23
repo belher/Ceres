@@ -10,23 +10,18 @@ namespace Ceres.Servicios.Models
 
         private DataContext conexion = new DataContext();
 
-        public List<Grupo_Familia> ListaGrupoFamilia
+        public List<Grupo_Familia> Listado
         {
             get
             {
-                if (conexion.Articulo.Count() > 0)
-                {
-                    return conexion.GrupoFamilia.OrderBy(a => a.Descripcion).ToList();
-                }
-                return null;
-
+                 return conexion.GrupoFamilia.OrderBy(a => a.Descripcion).ToList();
             }
         }
 
         public void Guardar(Grupo_Familia grupo_Familia)
         {
             Utilerias utileria = new Utilerias();
-            grupo_Familia .cve_Grupo_Familia = utileria.InsertarCaracteres(utileria.Valor(conexion.GrupoFamilia .Max(a => a.cve_Grupo_Familia )) + 1, 6, '0', xLado.Izquierda);
+            grupo_Familia .Codigo = utileria.InsertarCaracteres(utileria.Valor(conexion.GrupoFamilia .Max(a => a.Codigo)) + 1, 6, '0', xLado.Izquierda);
             grupo_Familia.Estatus = "A";
             conexion.GrupoFamilia.Add(grupo_Familia);
             conexion.SaveChanges();
@@ -36,7 +31,7 @@ namespace Ceres.Servicios.Models
         {
             Utilerias utileria = new Utilerias();
 
-            var update = conexion.GrupoFamilia.Where(a => a.cve_Grupo_Familia == grupo_Familia.cve_Grupo_Familia ).First();
+            var update = conexion.GrupoFamilia.Where(a => a.Codigo == grupo_Familia.Codigo).First();
 
             update.Descripcion  = grupo_Familia.Descripcion ;
             update.Estatus = grupo_Familia.Estatus;
